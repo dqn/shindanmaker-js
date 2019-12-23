@@ -16,6 +16,6 @@ const shindan = require('shindanmaker-js');
 const shindanId = 953698;
 const name = 'DQN';
 
-shindan.executeShindan(shindanId, name).then(console.log);
+shindan.execute(shindanId, name).then(console.log);
 // => センスは残念ながらありません。DQNとかちょっと意味不明です。もっと皆さんに...
 ```

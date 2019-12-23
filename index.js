@@ -3,8 +3,8 @@
 const rp = require('request-promise');
 const decode = require('unescape');
 
-const GET_RESULT_REGEXP = new RegExp(/quote: '(.+)?',$/m);
-const CRAZY_ESCAPE_REGEXP = new RegExp(/&#0/g);
+const GET_RESULT_REGEXP = /quote: '(.+)?',$/m;
+const CRAZY_ESCAPE_REGEXP = /&#0/g;
 
 const client = rp.defaults({
   baseUrl: 'https://shindanmaker.com/',
@@ -19,7 +19,7 @@ function setDefaultName() {
     .catch(() => false);
 }
 
-async function executeShindan(shindanId, name) {
+async function execute(shindanId, name) {
   if (!name && !initialized) {
     await setDefaultName();
     initialized = true;
@@ -46,5 +46,5 @@ function getResult(body) {
 }
 
 module.exports = {
-  executeShindan,
+  execute,
 };

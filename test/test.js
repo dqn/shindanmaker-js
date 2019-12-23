@@ -3,7 +3,7 @@ const shindan = require('./../index');
 const shindanId = 953698;
 
 async function test(name, expect) {
-  const res = await shindan.executeShindan(shindanId, name);
+  const res = await shindan.execute(shindanId, name);
   console.log(expect.test(res));
 }
 
