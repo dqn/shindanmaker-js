@@ -3538,7 +3538,7 @@ typescript@^3.9.7:
 
 unescape@dqn/unescape:
   version "1.0.1"
-  resolved "https://codeload.github.com/dqn/unescape/tar.gz/ff293795386ca36eb5e193bfc662a8f0c6d14d7b"
+  resolved "https://codeload.github.com/dqn/unescape/tar.gz/9dd2fe40dd440b9154fb0e3792fd02c9612eef1f"
   dependencies:
     extend-shallow "^2.0.1"
 
