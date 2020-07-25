@@ -19,7 +19,7 @@ describe('diagnose', () => {
   });
 
   test('Include HTML', async () => {
-    const result = await diagnose(shindanId, '"&#<>');
-    expect(result).toEqual(expect.stringMatching(/"&#<>/));
+    const result = await diagnose(shindanId, '<a>b&c"d\'e');
+    expect(result).toEqual(expect.stringMatching(/<a>b&c"d'e/));
   });
 });

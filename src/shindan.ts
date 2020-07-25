@@ -8,6 +8,10 @@ const client = rp.defaults({
 
 let isInitialized = false;
 
+function between(str: string, a: string, b: string): string {
+  return str.split(a).pop()?.split(b)?.shift() ?? '';
+}
+
 export async function diagnose(shindanId: number | string, name?: string): Promise<string> {
   if (!name && !isInitialized) {
     // Access a meaningless page to set the default name
@@ -15,17 +19,15 @@ export async function diagnose(shindanId: number | string, name?: string): Promi
     isInitialized = true;
   }
 
-  const body = await client.post(shindanId.toString(), {
-    formData: { u: name || '' },
+  const body: string = await client.post(shindanId.toString(), {
+    formData: { u: name ?? '' },
   });
 
-  const matches = body.match(/quote: '(.+)?',$/m);
+  const result = between(body, '<div style="">', '</div>').replace(/<.*?>/g, '');
 
-  if (!matches) {
+  if (!result) {
     throw new Error('failed to diagnose');
   }
 
-  console.log(matches[1]);
-
-  return decode(matches[1].replace(/&#0/g, '&#'), 'all');
+  return decode(result.replace(/&#0/g, '&#'), 'all');
 }
