@@ -1,7 +1,7 @@
 import axios from 'axios';
 import axiosCookieJarSupport from 'axios-cookiejar-support';
 import { stringify } from 'querystring';
-import * as decode from 'unescape';
+import decode from 'unescape';
 
 axiosCookieJarSupport(axios);
 

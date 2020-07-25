@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "yarn build",
     "test": "jest"
   },
   "keywords": [],
@@ -12,7 +14,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "axios-cookiejar-support": "^1.0.0",
-    "unescape": "^1.0.1"
+    "unescape": "dqn/unescape"
   },
   "devDependencies": {
     "@types/jest": "^26.0.7",
