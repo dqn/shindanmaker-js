@@ -1,9 +1,14 @@
-import * as rp from 'request-promise';
+import axios from 'axios';
+import axiosCookieJarSupport from 'axios-cookiejar-support';
+import { stringify } from 'querystring';
 import * as decode from 'unescape';
 
-const client = rp.defaults({
-  baseUrl: 'https://shindanmaker.com/',
+axiosCookieJarSupport(axios);
+
+const client = axios.create({
+  baseURL: 'https://shindanmaker.com/',
   jar: true,
+  withCredentials: true,
 });
 
 let isInitialized = false;
@@ -19,9 +24,9 @@ export async function diagnose(shindanId: number | string, name?: string): Promi
     isInitialized = true;
   }
 
-  const body: string = await client.post(shindanId.toString(), {
-    formData: { u: name ?? '' },
-  });
+  const body = await client
+    .post<string>(shindanId.toString(), stringify({ u: name ?? '' }))
+    .then((res) => res.data);
 
   const result = between(body, '<div style="">', '</div>').replace(/<.*?>/g, '');
 
