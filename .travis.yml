@@ -3,5 +3,8 @@ node_js:
   - 12
   - 13
   - 14
+script:
+  - yarn tsc
+  - yarn test
 after_success:
   - npx codecov
