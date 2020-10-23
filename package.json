@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.20.0",
+    "axios": "^0.21.0",
     "axios-cookiejar-support": "^1.0.0",
     "unescape": "dqn/unescape"
   },
